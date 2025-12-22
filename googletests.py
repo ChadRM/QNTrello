@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = []
+SCOPES = ['https://www.googleapis.com/auth/documents']
 
 def main():
     """Shows basic usage of the Google Docs API and Google Drive API.
@@ -36,7 +36,7 @@ def main():
         drive_service = build("drive", "v3", credentials=creds)
 
         # 1. Create a new document
-        title = "My New Document via Python"
+        title = "Chad's Test Document via Python"
         new_doc = docs_service.documents().create(body={"title": title}).execute()
         document_id = new_doc.get("documentId")
         print(f"Created document with ID: {document_id}")
@@ -47,7 +47,7 @@ def main():
             {
                 "insertText": {
                     "location": {"index": 1},
-                    "text": "Hello world! This document was created using the Google Docs API in Python."
+                    "text": "Hello world! This document was created using the Google Docs API in Python.  Still experimenting!"
                 }
             }
         ]
